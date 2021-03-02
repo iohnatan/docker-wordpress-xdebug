@@ -36,7 +36,7 @@ services:
 
         # setup wordpress after container start: https://stackoverflow.com/a/41854997
         healthcheck:
-            test: /config_wordpress.sh || exit 1
+            test: /config-wordpress.sh || exit 1
             interval: 5s
             timeout: 6s
             retries: 3
