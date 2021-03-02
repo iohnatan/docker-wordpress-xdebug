@@ -13,7 +13,7 @@ RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
 # Add WP setup script
-ADD config_wordpress.sh /config_wordpress.sh
+ADD config-wordpress.sh /config-wordpress.sh
 RUN chmod 755 /*.sh
 
 EXPOSE 9000
