@@ -2,24 +2,24 @@ version: '3.3'
 
 services:
     db:
-        container_name: db
+        container_name: wp_db
         image: mysql:5.7
         volumes:
             - db_data:/var/lib/mysql
         restart: always
         environment:
-            MYSQL_ROOT_PASSWORD: somewordpress
+            MYSQL_ROOT_PASSWORD: 5puHctQ9H3RxNwz72nQY
             MYSQL_DATABASE: wordpress
             MYSQL_USER: wordpress
             MYSQL_PASSWORD: wordpress
 
     wordpress:
-        container_name: web
+        container_name: wp_web
         depends_on:
             - db
         image: iohnatan/wordpress-xdebug:latest
         ports:
-            - "8001:80"
+            - "8000:80"
         restart: always
         environment:
             WORDPRESS_DB_HOST: db:3306
@@ -27,8 +27,22 @@ services:
             WORDPRESS_DB_PASSWORD: wordpress
             WORDPRESS_DB_NAME: wordpress
 
+            # WordPress setup variables
+            WP_URL: http://localhost:8000
+            WP_TITLE: Dev Site
+            WP_ADMIN_USER: admin
+            WP_ADMIN_PASSWORD: PRQSyZFGq4p3CSNbx3Xw
+            WP_ADMIN_EMAIL: docker-wordpress-xdebug-wpcli@mailinator.com
+
+        # setup wordpress after container start: https://stackoverflow.com/a/41854997
+        healthcheck:
+            test: /config_wordpress.sh || exit 1
+            interval: 5s
+            timeout: 6s
+            retries: 3
+
     phpmyadmin:
-        container_name: phpmyadmin
+        container_name: wp_phpmyadmin
         depends_on:
             - db
         image: phpmyadmin/phpmyadmin
