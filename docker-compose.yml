@@ -29,7 +29,7 @@ services:
 
             # WordPress setup variables
             WP_URL: http://localhost:8000
-            WP_TITLE: Dev Site
+            WP_TITLE: Dev-Site # no spaces
             WP_ADMIN_USER: admin
             WP_ADMIN_PASSWORD: PRQSyZFGq4p3CSNbx3Xw
             WP_ADMIN_EMAIL: docker-wordpress-xdebug-wpcli@mailinator.com

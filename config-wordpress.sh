@@ -15,3 +15,4 @@ if ! $(wp core is-installed  --allow-root --path='/var/www/html'); then
 else
    echo "=> WordPress is already configured.";
 fi
+#end of line must be linux type LF, if windows CRLF error will thrown "Syntax error: end of file unexpected (expecting "then")"
