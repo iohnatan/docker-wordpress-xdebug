@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
+# config WordPress
 if ! $(wp core is-installed  --allow-root --path='/var/www/html'); then
    echo "=> WordPress is not configured yet, configuring WordPress ..."
 
@@ -15,4 +16,5 @@ if ! $(wp core is-installed  --allow-root --path='/var/www/html'); then
 else
    echo "=> WordPress is already configured.";
 fi
-#end of line must be linux type LF, if windows CRLF error will thrown "Syntax error: end of file unexpected (expecting "then")"
+
+#end of line must be linux type LF, if is windows CRLF this error will thrown: "Syntax error: end of file unexpected (expecting "then")"
